@@ -10,6 +10,7 @@ char gameContinuation();
 
 int main()
 {
+    srand(time(0)); // Seed RNG once at start
     int guess, nguess = 1, randomNo = generateRandomNo(); // guess stores user input, nguess tracks attempts, randomNo (1 - 100) is the target
 
     // Replay on yes
@@ -17,7 +18,7 @@ int main()
     {
         printf("\nGuess the number between 1 to 100\n");
         // Validate Initialization
-        while (scanf("%d", &guess) != 1 || guess > 100 || guess < 0)
+        while (scanf("%d", &guess) != 1 || guess > 100 || guess < 1)
         {
             // Clear input buffer
             int ch;
@@ -54,7 +55,6 @@ int main()
 // Returns: A random integer in the range [1, 100]
 int generateRandomNo()
 {
-    srand(time(0));
     return rand() % 100 + 1;
 }
 
